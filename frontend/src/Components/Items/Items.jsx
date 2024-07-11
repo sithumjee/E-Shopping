@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Items.css";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../../Context/ShopContent";
 
-function Items(props) {
+function Items({ id, name, description, image, price, category }) {
+  const { url } = useContext(ShopContext);
   return (
     <div className="item">
-      <Link to={`/product/${props.id}`}>
-        <img onClick={window.scrollTo(0, 0)} src={props.image} alt="" />
+      <Link to={`/product/${id}`}>
+        <img
+          onClick={window.scrollTo(0, 0)}
+          src={url + "/images/" + image}
+          alt=""
+        />
       </Link>
-      <p>{props.name}</p>
+      <p>{name}</p>
       <div className="item-prices">
-        <div className="item-price-new">Rs {props.new_price}</div>
-        <div className="item-price-old">Rs {props.old_price}</div>
+        <div className="item-price-new">Rs {price}</div>
       </div>
     </div>
   );

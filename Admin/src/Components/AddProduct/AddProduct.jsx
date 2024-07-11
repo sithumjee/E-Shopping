@@ -1,120 +1,125 @@
-import React, { useState } from "react";
+import React from "react";
+import { assets } from "../../assets/assests";
+import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
-const AdminPanel = () => {
-  const [productData, setProductData] = useState({
+const Add = ({ url }) => {
+  const [image, setImage] = useState(false);
+
+  const [data, setData] = useState({
     name: "",
-    image: null,
-    category: "",
-    new_price: "",
-    old_price: "",
+    description: "",
+    price: "",
+    category: "men",
   });
 
-  const handleInputChange = (e) => {
-    const { name, value, files } = e.target;
-    setProductData((prevState) => ({
-      ...prevState,
-      [name]: files ? files[0] : value,
-    }));
+  const onChangeHandler = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setData((data) => ({ ...data, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
     const formData = new FormData();
-    formData.append("name", productData.name);
-    formData.append("image", productData.image);
-    formData.append("category", productData.category);
-    formData.append("new_price", productData.new_price);
-    formData.append("old_price", productData.old_price);
-
-    try {
-      const response = await axios.post(
-        "http://localhost:4000/addProduct",
-        formData
-      );
-      console.log(response.data);
-      // Reset the form after successful submission
-      setProductData({
+    formData.append("name", data.name);
+    formData.append("description", data.description);
+    formData.append("price", Number(data.price));
+    formData.append("category", data.category);
+    formData.append("image", image);
+    const response = await axios.post(
+      `http://localhost:5000/api/product/additem`,
+      formData
+    );
+    if (response.data.success) {
+      setData({
         name: "",
-        image: null,
-        category: "",
-        new_price: "",
-        old_price: "",
+        description: "",
+        price: "",
+        category: "men",
       });
-    } catch (error) {
-      console.error("Error:", error);
-      console.error("Error message:", error.message);
-      console.error("Error stack:", error.stack);
+      setImage(false);
+      toast.success(response.data.message);
+    } else {
+      toast.error(response.data.message);
     }
   };
 
   return (
-    <div>
-      <h2>Admin Panel</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Product Name:</label>
+    <div className="add">
+      <form className="flex-col" onSubmit={onSubmitHandler}>
+        <div className="add-img-upload flex-col">
+          <p>Upload Image</p>
+          <label htmlFor="image">
+            <img
+              src={image ? URL.createObjectURL(image) : assets.uploadArea}
+              alt=""
+            />
+          </label>
           <input
-            type="text"
-            id="name"
-            name="name"
-            value={productData.name}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="image">Product Image:</label>
-          <input
+            onChange={(e) => setImage(e.target.files[0])}
             type="file"
             id="image"
-            name="image"
-            onChange={handleInputChange}
+            hidden
             required
           />
         </div>
-        <div>
-          <label htmlFor="category">Product Category:</label>
-          <select
-            id="category"
-            name="category"
-            value={productData.category}
-            onChange={handleInputChange}
-            required
-          >
-            <option value="">Select a category</option>
-            <option value="electronics">Electronics</option>
-            <option value="clothing">Clothing</option>
-            <option value="home">Home</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="new_price">New Price:</label>
+
+        <div className="add-name flex-col">
+          <p>Book Name</p>
           <input
-            type="number"
-            id="new_price"
-            name="new_price"
-            value={productData.new_price}
-            onChange={handleInputChange}
-            required
+            onChange={onChangeHandler}
+            value={data.name}
+            type="text"
+            name="name"
+            placeholder="Enter"
           />
         </div>
-        <div>
-          <label htmlFor="old_price">Old Price:</label>
-          <input
-            type="number"
-            id="old_price"
-            name="old_price"
-            value={productData.old_price}
-            onChange={handleInputChange}
+        <div className="add-description flex-col">
+          <p>Book description</p>
+          <textarea
+            onChange={onChangeHandler}
+            value={data.description}
+            rows="6"
+            name="description"
+            placeholder="Enter"
             required
-          />
+          ></textarea>
         </div>
-        <button type="submit">Add Product</button>
+
+        <div className="add-price-category ">
+          <div className="add-category flex-col">
+            <p>Book Category</p>
+            <select
+              onChange={onChangeHandler}
+              value={data.category}
+              name="category"
+            >
+              <option value="men"> men</option>
+              <option value="women"> women</option>
+              <option value="kids"> kids</option>
+            </select>
+          </div>
+
+          <div className="add-price flex-col">
+            <p>Book Price</p>
+            <input
+              onChange={onChangeHandler}
+              value={data.price}
+              type="Number"
+              name="price"
+              placeholder="Rs"
+            />
+          </div>
+        </div>
+
+        <button type="submit" className="add-button">
+          ADD
+        </button>
       </form>
     </div>
   );
 };
 
-export default AdminPanel;
+export default Add;

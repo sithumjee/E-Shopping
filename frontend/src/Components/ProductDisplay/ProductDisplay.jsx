@@ -6,19 +6,20 @@ import { ShopContext } from "../../Context/ShopContent";
 
 const ProductDisplay = (props) => {
   const { product } = props;
-  const { addToCart } = useContext(ShopContext);
+  const { cartItems, addToCart, removeFromCart, url } = useContext(ShopContext);
+  const imageUrl = `${url}/images/${product.image}`;
   return (
     <div className="productDisplay">
       <div className="display-left">
         <div className="productDisplay-img-list">
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
-          <img src={product.image} alt="" />
+          <img src={imageUrl} alt="" />
+          <img src={imageUrl} alt="" />
+          <img src={imageUrl} alt="" />
+          <img src={imageUrl} alt="" />
         </div>
 
         <div className="productDisplay-img">
-          <img className="productDisplay-img-main" src={product.image} alt="" />
+          <img className="productDisplay-img-main" src={imageUrl} alt="" />
         </div>
       </div>
 
@@ -34,8 +35,8 @@ const ProductDisplay = (props) => {
         </div>
 
         <div className="display-right-price">
-          <div className="rightPriceOld">Rs {product.old_price}</div>
-          <div className="rightPriceNew">Rs {product.new_price}</div>
+          <div className="rightCategory"> {product.category}</div>
+          <div className="rightPriceNew">Rs {product.price}</div>
         </div>
 
         <div className="display-right-description">
@@ -55,7 +56,8 @@ const ProductDisplay = (props) => {
 
         <button
           onClick={() => {
-            addToCart(product.id);
+            addToCart(product._id);
+            console.log("add to cart");
           }}
         >
           ADD TO CART

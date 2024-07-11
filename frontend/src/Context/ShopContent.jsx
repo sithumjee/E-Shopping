@@ -1,58 +1,63 @@
-import React, { createContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import all_product from "../Components/Assets/all_product";
+import axios from "axios";
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
-  let cart = {};
-  for (let index = 0; index < all_product.length; index++) {
-    cart[index] = 0;
-  }
-  return cart; // Return the cart object
-};
-
 const ShopContextProvider = (props) => {
-  const [cartItems, setCartItems] = React.useState(getDefaultCart());
+  const [cartItems, setCartItems] = useState({});
+  const url = "http://localhost:5000";
+  const [product_list, setProductList] = useState([]);
 
-  const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    console.log(cartItems);
+  const addToCart = async (itemId) => {
+    if (cartItems[itemId]) {
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    } else {
+      setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
+    }
   };
 
-  const removeToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+  const removeFromCart = async (itemId) => {
+    if (cartItems[itemId] === 1) {
+      setCartItems((prev) => {
+        const newCartItems = { ...prev };
+        delete newCartItems[itemId];
+        return newCartItems;
+      });
+    } else {
+      setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+    }
   };
 
-  const cartTotal = () => {
-    let total = 0;
+  const TotalCartAmount = () => {
+    let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let iteminfo = all_product.find(
-          (product) => product.id === parseInt(item)
-        );
-        total += iteminfo.new_price * cartItems[item];
+        let itemInfo = product_list.find((product) => product._id === item);
+        if (itemInfo) {
+          totalAmount += parseFloat(itemInfo.price) * cartItems[item];
+        }
       }
     }
-    return total;
+    return totalAmount;
   };
 
-  const totalCartItems = () => {
-    let totalItem = 0;
-    for (const item in cartItems) {
-      if (cartItems[item] > 0) {
-        totalItem += cartItems[item];
-      }
-    }
-    return totalItem;
+  const fetchProductList = async () => {
+    const response = await axios.get(url + "/api/product/listitem");
+    setProductList(response.data.data);
   };
+
+  useEffect(() => {
+    fetchProductList();
+  }, []);
 
   const contextValue = {
-    all_product,
     cartItems,
     addToCart,
-    removeToCart,
-    cartTotal,
-    totalCartItems,
+    removeFromCart,
+    TotalCartAmount,
+    product_list,
+    url,
   };
   return (
     <ShopContext.Provider value={contextValue}>

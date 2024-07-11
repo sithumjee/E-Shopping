@@ -6,7 +6,7 @@ import dropdown_icon from "../Components/Assets/dropdown_icon.png";
 import Items from "../Components/Items/Items";
 
 export default function ShopCategory(props) {
-  const { all_product } = useContext(ShopContext);
+  const { product_list } = useContext(ShopContext);
   return (
     <div className="mainCategory">
       <div>
@@ -23,16 +23,15 @@ export default function ShopCategory(props) {
       </div>
 
       <div className="shopcategory-product">
-        {all_product.map((item, i) => {
+        {product_list.map((item, i) => {
           if (props.category === item.category) {
             return (
               <Items
                 key={i}
-                id={item.id}
+                id={item._id}
                 name={item.name}
                 image={item.image}
-                new_price={item.new_price}
-                old_price={item.old_price}
+                price={item.price}
                 className="shopcategory-item"
               />
             );

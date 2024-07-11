@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
   res.send("Welcome");
 });
 
+app.use("/images", express.static("upload"));
 app.use("/api/product", productRouter);
 
 app.listen(port, () => {
