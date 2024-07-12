@@ -105,3 +105,10 @@
   color: white;
   cursor: pointer;
 }
+
+.navbar-profile button {
+  background-color: red;
+  color: white;
+  border: none;
+  outline: none;
+}
