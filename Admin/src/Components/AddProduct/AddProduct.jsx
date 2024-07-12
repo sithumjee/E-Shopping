@@ -3,6 +3,7 @@ import { assets } from "../../assets/assests";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "./AddProduct.css";
 
 const Add = ({ url }) => {
   const [image, setImage] = useState(false);
@@ -47,9 +48,9 @@ const Add = ({ url }) => {
   };
 
   return (
-    <div className="add">
+    <div className="addproduct">
       <form className="flex-col" onSubmit={onSubmitHandler}>
-        <div className="add-img-upload flex-col">
+        <div className="addproduct-img-upload flex-col">
           <p>Upload Image</p>
           <label htmlFor="image">
             <img
@@ -66,8 +67,8 @@ const Add = ({ url }) => {
           />
         </div>
 
-        <div className="add-name flex-col">
-          <p>Book Name</p>
+        <div className="addproduct-name flex-col">
+          <p>Product Name</p>
           <input
             onChange={onChangeHandler}
             value={data.name}
@@ -76,8 +77,8 @@ const Add = ({ url }) => {
             placeholder="Enter"
           />
         </div>
-        <div className="add-description flex-col">
-          <p>Book description</p>
+        <div className="addproduct-description flex-col">
+          <p>Product description</p>
           <textarea
             onChange={onChangeHandler}
             value={data.description}
@@ -88,9 +89,9 @@ const Add = ({ url }) => {
           ></textarea>
         </div>
 
-        <div className="add-price-category ">
-          <div className="add-category flex-col">
-            <p>Book Category</p>
+        <div className="addproduct-price-category ">
+          <div className="addproduct-category flex-col">
+            <p>Product Category</p>
             <select
               onChange={onChangeHandler}
               value={data.category}
@@ -102,8 +103,8 @@ const Add = ({ url }) => {
             </select>
           </div>
 
-          <div className="add-price flex-col">
-            <p>Book Price</p>
+          <div className="addproduct-price flex-col">
+            <p>Product Price</p>
             <input
               onChange={onChangeHandler}
               value={data.price}
@@ -114,7 +115,7 @@ const Add = ({ url }) => {
           </div>
         </div>
 
-        <button type="submit" className="add-button">
+        <button type="submit" className="addproduct-button">
           ADD
         </button>
       </form>
