@@ -28,7 +28,7 @@ const ListProduct = () => {
       const response = await axios.post(
         `http://localhost:5000/api/product/removeitem`,
         {
-          id: foodId,
+          _id: foodId,
         }
       );
       if (response.data.success) {

@@ -1,24 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./RelatedProduct.css";
-import data_product from "../Assets/data";
 import Items from "../Items/Items";
+import { ShopContext } from "../../Context/ShopContent";
 
-const RelatedProduct = () => {
+const RelatedProduct = (props) => {
+  const { product } = props;
+  const { product_list } = useContext(ShopContext);
+
+  // Filter the product_list to get the related products
+  const relatedProducts = product_list.filter(
+    (item) => item.category === product.category && item._id !== product._id
+  );
+
   return (
     <div className="relatedproducts">
       <h1>Related Products</h1>
       <hr />
 
       <div className="relatedproducts__container">
-        {data_product.map((item, i) => {
+        {relatedProducts.map((item, i) => {
           return (
             <Items
               key={i}
-              id={item.id}
+              id={item._id}
               name={item.name}
               image={item.image}
-              new_price={item.new_price}
-              old_price={item.old_price}
+              price={item.price}
             />
           );
         })}

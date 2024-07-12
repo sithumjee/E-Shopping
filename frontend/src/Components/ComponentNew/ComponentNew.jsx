@@ -5,13 +5,17 @@ import { ShopContext } from "../../Context/ShopContent";
 
 const ComponentNew = () => {
   const { product_list } = useContext(ShopContext);
+
+  // Get the last 10 items from the product_list
+  const lastTenItems = product_list.slice(-10);
+
   return (
     <div className="newComponent">
       <h1>LATEST ARRIVALS</h1> {/* Heading for the latest arrivals */}
       <hr /> {/* Horizontal line */}
       <div className="new-item">
-        {product_list.map((item, i) => {
-          // Mapping through the new collections data
+        {lastTenItems.map((item, i) => {
+          // Mapping through the last 10 items
           return (
             <Items
               key={i} // Unique key for each item

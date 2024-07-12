@@ -6,19 +6,20 @@ import { ShopContext } from "../../Context/ShopContent";
 
 const Popular = () => {
   const { product_list } = useContext(ShopContext);
+  const firstEightItems = product_list.slice(0, 8);
   return (
     <div className="popular">
-      <h1>POPULAR IN WOMEN</h1>
+      <h1>POPULAR</h1>
       <hr />
       <div className="popular-item">
-        {product_list.map((item, i) => {
+        {firstEightItems.map((item, i) => {
           return (
             <Items
               key={i}
               id={item._id}
               name={item.name}
               image={item.image}
-              new_price={item.price}
+              price={item.price}
             />
           );
         })}

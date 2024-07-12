@@ -39,8 +39,8 @@ const listProduct = async (req, res) => {
 
 const removeProduct = async (req, res) => {
   try {
-    const book = await shopModel.findById(req.body._id);
-    fs.unlink(`../upload/${book.image}`, () => {});
+    const product = await shopModel.findById(req.body._id);
+    fs.unlink(`../upload/${product.image}`, () => {});
 
     await shopModel.findByIdAndDelete(req.body._id);
     res.json({ success: true, message: "product Removed" });

@@ -1,79 +1,54 @@
-section {
-  height: 80vh;
-  padding: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.offers-section {
+  margin: 4rem 2rem;
   background: linear-gradient(180deg, #8ec5fc 0%, #e0c3fc 100%);
 }
 
 .offers {
-  width: 50%;
-  height: 60vh;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 140px;
-  background: #314755; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #26a0da,
-    #314755
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #26a0da,
-    #314755
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-radius: 10px;
 }
 
 .offers-left {
-  padding-top: 180px;
-  width: 50%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex: 1;
+  padding-right: 2rem;
 }
 
 .offers-left h1 {
   font-size: 3rem;
-  color: #0a0101;
-  font-weight: 1000;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .offers-left p {
-  font-size: 1rem;
-  color: #ffffff;
-  font-weight: 500;
-  margin-bottom: 50px;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-.offers-left button {
-  width: 310px;
-  height: 70px;
-  border-radius: 75px;
-  background-color: #ff4141;
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 500px;
+.offers-btn {
+  background-color: #007bff;
+  color: #fff;
   border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.offers-left button:hover {
-  background-color: #b71d1d;
+.offers-btn:hover {
+  background-color: #0056b3;
 }
 
 .offers-right {
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
-  padding-top: 120px;
 }
 
 .offers-right img {
-  width: 250px;
+  max-width: 100%;
+  height: auto;
 }

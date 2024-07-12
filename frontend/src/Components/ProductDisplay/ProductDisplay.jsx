@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./ProductDisplay.css";
 import star_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
@@ -7,7 +7,13 @@ import { ShopContext } from "../../Context/ShopContent";
 const ProductDisplay = (props) => {
   const { product } = props;
   const { cartItems, addToCart, removeFromCart, url } = useContext(ShopContext);
+  const [selectedSize, setSelectedSize] = useState(null);
   const imageUrl = `${url}/images/${product.image}`;
+
+  const handleSizeClick = (size) => {
+    setSelectedSize(size);
+  };
+
   return (
     <div className="productDisplay">
       <div className="display-left">
@@ -24,7 +30,10 @@ const ProductDisplay = (props) => {
       </div>
 
       <div className="display-right">
-        <h1>{product.name}</h1>
+        <h1>
+          <span>Name : </span>
+          {product.name}
+        </h1>
         <div className="display-right-star">
           <img src={star_icon} alt="" />
           <img src={star_icon} alt="" />
@@ -35,7 +44,6 @@ const ProductDisplay = (props) => {
         </div>
 
         <div className="display-right-price">
-          <div className="rightCategory"> {product.category}</div>
           <div className="rightPriceNew">Rs {product.price}</div>
         </div>
 
@@ -46,11 +54,17 @@ const ProductDisplay = (props) => {
         <div className="display-right-size">
           <h3>Size</h3>
           <div className="sizeList">
-            <div className="sizeList-item">S</div>
-            <div className="sizeList-item">M</div>
-            <div className="sizeList-item">L</div>
-            <div className="sizeList-item">XL</div>
-            <div className="sizeList-item">XXL</div>
+            {["S", "M", "L", "XL", "XXL"].map((size) => (
+              <div
+                key={size}
+                className={`sizeList-item ${
+                  selectedSize === size ? "selected" : ""
+                }`}
+                onClick={() => handleSizeClick(size)}
+              >
+                {size}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -63,10 +77,12 @@ const ProductDisplay = (props) => {
           ADD TO CART
         </button>
         <p className="displayCategory">
-          <span>Category :</span>Women , T-shirt, Crop Top{" "}
+          <span>Category :</span>
+          {product.category}
         </p>
         <p className="displayCategory">
-          <span>Tags :</span>Modern , Latest{" "}
+          <span>Tags :</span>
+          {product.category} , Latest{" "}
         </p>
       </div>
     </div>

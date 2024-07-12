@@ -4,17 +4,16 @@ import exclusive from "../Assets/exclusive_image.png";
 
 const Offers = () => {
   return (
-    <section>
+    <section className="offers-section">
       <div className="offers">
         <div className="offers-left">
-          <h1>Exclusive</h1>
-          <h1>Offers to You</h1>
-          <p>Get the best deals on the most popular products.</p>
-          <button>Check Now</button>
+          <h1>Limited Time Deals</h1>
+          <p>Don't miss out on our exclusive offers!</p>
+          <button className="offers-btn">Shop Now</button>
         </div>
 
         <div className="offers-right">
-          <img src={exclusive} alt="" />
+          <img src={exclusive} alt="Exclusive Offer" />
         </div>
       </div>
     </section>
