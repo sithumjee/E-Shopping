@@ -8,6 +8,11 @@ E-Shopping Site is a comprehensive online shopping platform that offers a wide r
 -Here’s a demonstration of the frontend in action:
 -https://github.com/user-attachments/assets/84d80170-c313-4cb6-9529-db96af5407ef
 
+## Admin Video
+
+-Here’s a demonstration of the admin in action:
+-https://github.com/user-attachments/assets/74f30ff5-0b94-44f2-b3e9-6584bad905d8
+
 
 ## Features
 
