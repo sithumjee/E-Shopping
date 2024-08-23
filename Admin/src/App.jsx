@@ -4,7 +4,7 @@ import Navbar from "./Components/NAvbar/Navbar";
 import Admin from "./Pages/Admin/Admin";
 
 const App = () => {
-  const url = "http://localhost:4000";
+  const url = "https://e-shopping-backend-5il7.onrender.com";
   return (
     <div>
       <Navbar />
