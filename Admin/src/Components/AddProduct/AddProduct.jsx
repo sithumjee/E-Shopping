@@ -30,7 +30,7 @@ const Add = ({ url }) => {
     formData.append("category", data.category);
     formData.append("image", image);
     const response = await axios.post(
-      `http://localhost:5000/api/product/additem`,
+      `https://e-shopping-backend-5il7.onrender.com/api/product/additem`,
       formData
     );
     if (response.data.success) {
