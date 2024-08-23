@@ -18,6 +18,9 @@ E-Shopping Site is a comprehensive online shopping platform that offers a wide r
 - **Database**: MongoDB
 - **Other Tools**: Git, GitHub, npm, etc.
 
+##Frontend
+https://github.com/user-attachments/assets/84d80170-c313-4cb6-9529-db96af5407ef
+
 ## Installation and Setup
 
 1. Clone the repository:
