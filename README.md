@@ -2,6 +2,13 @@
 
 E-Shopping Site is a comprehensive online shopping platform that offers a wide range of clothing options for men, women, and kids. The project is developed using a modern tech stack, including React.js for the frontend, Node.js for the backend, and Vite for the admin interface. The application is powered by a MongoDB database.
 
+
+## Frontend Video
+
+-Here’s a demonstration of the frontend in action:
+-https://github.com/user-attachments/assets/84d80170-c313-4cb6-9529-db96af5407ef
+
+
 ## Features
 
 1. **Product Catalog**: Users can browse through a diverse collection of clothing items, organized into three main categories: Men, Women, and Kids.
@@ -18,8 +25,7 @@ E-Shopping Site is a comprehensive online shopping platform that offers a wide r
 - **Database**: MongoDB
 - **Other Tools**: Git, GitHub, npm, etc.
 
-##Frontend
-!https://github.com/user-attachments/assets/84d80170-c313-4cb6-9529-db96af5407ef
+
 
 ## Installation and Setup
 
