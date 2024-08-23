@@ -9,7 +9,7 @@ const ListProduct = () => {
   const fetchList = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/product/listitem`
+        `https://e-shopping-backend-5il7.onrender.com/api/product/listitem`
       );
 
       if (response.data.success) {
@@ -26,7 +26,7 @@ const ListProduct = () => {
   const removeFood = async (foodId) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/product/removeitem`,
+        `https://e-shopping-backend-5il7.onrender.com/api/product/removeitem`,
         {
           _id: foodId,
         }
