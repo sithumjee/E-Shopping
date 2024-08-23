@@ -54,7 +54,7 @@ const CardItems = () => {
                 <div key={item._id} className="cardItems-item">
                   <div className="cardItems-item-image">
                     <img
-                      src={`${url}/images/${item.image}`}
+                      src={`https://github.com/sithumjee/E-Shopping/tree/master/Backend/Upload/${item.image}`}
                       alt="Product"
                       className="carditemImg"
                     />
