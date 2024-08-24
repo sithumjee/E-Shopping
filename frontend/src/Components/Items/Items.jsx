@@ -6,6 +6,7 @@ import { ShopContext } from "../../Context/ShopContent";
 function Items({ id, name, description, image, price, category }) {
   const { url } = useContext(ShopContext);
   return (
+    <Link to={`/product/${id}`}>
     <div className="item">
       <Link to={`/product/${id}`}>
         <img
@@ -19,6 +20,7 @@ function Items({ id, name, description, image, price, category }) {
         <div className="item-price-new">Rs {price}</div>
       </div>
     </div>
+       </Link>
   );
 }
 
