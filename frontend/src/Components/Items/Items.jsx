@@ -7,20 +7,20 @@ function Items({ id, name, description, image, price, category }) {
   const { url } = useContext(ShopContext);
   return (
     <Link to={`/product/${id}`}>
-    <div className="item">
-      <Link to={`/product/${id}`}>
-        <img
-          onClick={window.scrollTo(0, 0)}
-          src={url + "/images/" + image}
-          alt=""
-        />
-      </Link>
-      <p>{name}</p>
-      <div className="item-prices">
-        <div className="item-price-new">Rs {price}</div>
+      <div className="item">
+        <Link to={`/product/${id}`}>
+          <img
+            onClick={() => window.scrollTo(0, 0)}
+            src={`${url}/images/${image}`}
+            alt={name}
+          />
+        </Link>
+        <p>{name}</p>
+        <div className="item-prices">
+          <div className="item-price-new">Rs {price}</div>
+        </div>
       </div>
-    </div>
-       </Link>
+    </Link>
   );
 }
 
