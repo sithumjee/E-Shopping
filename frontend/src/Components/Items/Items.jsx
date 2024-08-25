@@ -11,7 +11,8 @@ function Items({ id, name, description, image, price, category }) {
         <Link to={`/product/${id}`}>
           <img
             onClick={() => window.scrollTo(0, 0)}
-            src={`${url}/images/${image}`}
+            src={`https://github.com/sithumjee/E-Shopping/tree/master/Backend/Upload/${image}`}
+            
             alt={name}
           />
         </Link>
