@@ -8,7 +8,7 @@ const ProductDisplay = (props) => {
   const { product } = props;
   const { cartItems, addToCart, removeFromCart, url } = useContext(ShopContext);
   const [selectedSize, setSelectedSize] = useState(null);
-  const imageUrl = `https://raw.githubusercontent.com/sithumjee/E-Shopping/master/Backend/Upload/${image}`;
+  const imageUrl = `https://raw.githubusercontent.com/sithumjee/E-Shopping/master/Backend/Upload/${product.image}`;
 
   const handleSizeClick = (size) => {
     setSelectedSize(size);
