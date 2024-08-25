@@ -23,7 +23,10 @@ app.get("/", (req, res) => {
   res.send("Welcome");
 });
 //==================================================
-app.use("/images", express.static("upload"));
+const path = require('path');
+
+app.use("/images", express.static(path.join(__dirname, "upload")));
+
 app.use("/api/product", productRouter);
 app.use("/api/user", userRouter);
 
