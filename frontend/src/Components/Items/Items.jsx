@@ -5,14 +5,17 @@ import { ShopContext } from "../../Context/ShopContent";
 
 function Items({ id, name, description, image, price, category }) {
   const { url } = useContext(ShopContext);
+  
+  // Update the URL to point to the raw GitHub content
+  const imageUrl = `https://raw.githubusercontent.com/sithumjee/E-Shopping/master/Backend/Upload/${image}`;
+
   return (
     <Link to={`/product/${id}`}>
       <div className="item">
         <Link to={`/product/${id}`}>
           <img
             onClick={() => window.scrollTo(0, 0)}
-            src={`https://github.com/sithumjee/E-Shopping/tree/master/Backend/Upload/${image}`}
-            
+            src={imageUrl}
             alt={name}
           />
         </Link>
