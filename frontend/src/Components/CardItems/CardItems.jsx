@@ -18,6 +18,7 @@ const CardItems = () => {
 
   const navigate = useNavigate();
 
+
   useEffect(() => {
     if (!token) {
       alert("please login first");
@@ -54,7 +55,7 @@ const CardItems = () => {
                 <div key={item._id} className="cardItems-item">
                   <div className="cardItems-item-image">
                     <img
-                      src={`${url}/images/${item.image}`}
+                      src={`https://raw.githubusercontent.com/sithumjee/E-Shopping/master/Backend/Upload/${item.image}`}
                       alt="Product"
                       className="carditemImg"
                     />
